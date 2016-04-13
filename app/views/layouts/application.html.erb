@@ -14,7 +14,10 @@
 			<nav>
 				<%= link_to "Articles", posts_path %>
 				<%= link_to "Projects", projects_path %>
-				<a href="contact.html">Contact</a>
+				<%= link_to "Contact", new_contact_path %>
+				<% if user_signed_in? %>
+					<%= link_to "Sign Out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you'd like to sign out?"}  %>
+				<% end %>	 
 			</nav>
 	</header>
 
@@ -23,7 +26,7 @@
 	<% elsif alert %>
 	  <p class="alert"><%= alert %></p>
   <% end %>
-  
+
 	<%= yield %>
 
 	<footer id="main_footer">
